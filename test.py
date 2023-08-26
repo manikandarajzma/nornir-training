@@ -10,6 +10,11 @@ credentials = {'aaaUser':
     }
 
 base_url = 'https://%s/api/' % apic_ip
+
+
+
+
+
 login_url = base_url + '/aaaLogin.json'
 
 json_credentials = json.dumps(credentials)
