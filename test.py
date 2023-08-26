@@ -1,8 +1,8 @@
 import requests, json, re
 
-apic_ip = 'mbdcapic1.multicare.org'
-apic_username = 'admin'
-apic_password = 'C1sco123'
+apic_ip = 'rg'
+apic_username = ''
+apic_password = ''
 credentials = {'aaaUser':
                 {'attributes':
                     {'name': apic_username, 'pwd': apic_password }
