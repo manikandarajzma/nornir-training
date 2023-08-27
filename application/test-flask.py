@@ -30,7 +30,7 @@ def eptables():
     eps = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('eps.html',title = 'Endpoints Table', eps=eps)
+    return render_template('tables-data.html',title = 'Endpoints Table', eps=eps)
 
 
 if __name__ == "__main__":
