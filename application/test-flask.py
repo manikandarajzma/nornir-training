@@ -12,14 +12,14 @@ def get_db_connection():
                             port = 5433)
     return conn
 
-@app.route('/')
-def index():
+@app.route('/tables')
+def tables():
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('SELECT * FROM endpoint_data;')
     eps = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('eps.html', eps=eps)
+    return render_template('eps.html',title = 'Endpoints Table', eps=eps)
 
 

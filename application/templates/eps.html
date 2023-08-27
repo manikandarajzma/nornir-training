@@ -24,12 +24,19 @@
 {% endblock %}
 
 {% block scripts %}
-  <script>
-    $(document).ready(function () {
+<script>
+  $(document).ready(function(){
       $('#data').DataTable({
-      });
-    });
+          dom: 'lfrtipB',
+          buttons: [
+              {
+                  extend: 'excel',
+              }         
+          ]  
+        });
+  });
   </script>
+  
 {% endblock %}
 
 
