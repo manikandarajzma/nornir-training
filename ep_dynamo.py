@@ -11,14 +11,23 @@ conn = psycopg2.connect(database = "aci",
                         password = "postgres",
                         port = 5433)
 cur = conn.cursor()
-drop_table = ''' DROP table IF EXISTS endpoint_data '''
-cur.execute(drop_table)
+drop_table_endpoint_data = ''' DROP table IF EXISTS endpoint_data '''
+cur.execute(drop_table_endpoint_data)
 cur.execute("""CREATE TABLE endpoint_data(
             epg_name VARCHAR(1000),
             vlan VARCHAR(50)  NOT NULL,
             ip_address VARCHAR(100) NOT NULL,
             mac_address VARCHAR(100) NOT NULL);
             """)
+
+drop_table_endpoint_count = ''' DROP table IF EXISTS endpoint_count '''
+cur.execute(drop_table_endpoint_count)
+cur.execute("""CREATE TABLE endpoint_count(
+             ep_count VARCHAR(50));
+            """)
+
+ep_number = ep_data['totalCount']
+cur.execute("INSERT INTO endpoint_count (ep_count) values (%s)", (ep_number, ));
 
 for data in ep_data['imdata']:
   for ep in data['fvCEp'].items():
@@ -27,7 +36,6 @@ for data in ep_data['imdata']:
        vlans = ep[1]['encap']
        ip = ep[1]['ip']
        mac = ep[1]['mac']
-       #print(epg)
        cur.execute("INSERT INTO endpoint_data values (%s,%s,%s,%s)", (epg, vlans, ip, mac));
 conn.commit()
 cur.close()

@@ -12,8 +12,18 @@ def get_db_connection():
                             port = 5433)
     return conn
 
-@app.route('/tables')
-def tables():
+@app.route('/')
+def index():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM endpoint_count;')
+    epcount = cur.fetchone()
+    cur.close()
+    conn.close()
+    return render_template('index.html', epcount=epcount)
+
+@app.route('/eptables')
+def eptables():
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('SELECT * FROM endpoint_data;')
@@ -23,3 +33,5 @@ def tables():
     return render_template('eps.html',title = 'Endpoints Table', eps=eps)
 
 
+if __name__ == "__main__":
+    app.run(debug = True)
