@@ -1,8 +1,8 @@
 import requests, json, re
 
-apic_ip = 'rg'
-apic_username = ''
-apic_password = ''
+apic_ip = 'mbdcapic1.multicare.org'
+apic_username = 'admin'
+apic_password = 'C1sco123'
 credentials = {'aaaUser':
                 {'attributes':
                     {'name': apic_username, 'pwd': apic_password }
@@ -27,7 +27,7 @@ login_attributes = post_response_json['imdata'][0]['aaaLogin']['attributes']
 cookies = {}
 cookies['APIC-Cookie'] = login_attributes['token']
 
-request_url = '/node/class/fvCEp.json'
+request_url = '/node/class/fvAp.json'
 
 response_data = requests.get(base_url + request_url, cookies=cookies, verify = False )
 
