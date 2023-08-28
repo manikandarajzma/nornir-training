@@ -1,6 +1,9 @@
 import os
 import psycopg2
 from flask import Flask, render_template
+import json
+from datetime import datetime
+
 
 app = Flask(__name__)
 
@@ -18,9 +21,18 @@ def index():
     cur = conn.cursor()
     cur.execute('SELECT * FROM endpoint_count;')
     epcount = cur.fetchone()
+    cur.execute('SELECT ep_count FROM endpoint_graph;')
+    endpointcount = cur.fetchall()
+    endpointcount = [x[0] for x in endpointcount]
+    cur.execute('SELECT dateadded FROM endpoint_graph;')
+    timestamp = cur.fetchall()
+    timestamp = [x[0] for x in timestamp]
+    cleaned_timestamp = []
+    for cleanedentry in timestamp:
+         cleaned_timestamp.append(datetime.strptime(cleanedentry, '%m/%d/%Y, %H:%M:%S'))
     cur.close()
     conn.close()
-    return render_template('index.html', epcount=epcount)
+    return render_template('index.html', epcount=epcount, endpointcount=endpointcount,cleaned_timestamp=cleaned_timestamp)
 
 @app.route('/eptables')
 def eptables():
