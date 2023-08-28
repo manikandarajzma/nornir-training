@@ -30,9 +30,25 @@ def index():
     cleaned_timestamp = []
     for cleanedentry in timestamp:
          cleaned_timestamp.append(datetime.strptime(cleanedentry, '%m/%d/%Y, %H:%M:%S'))
+    ''' tenant count '''
+    cur.execute('SELECT * FROM tenant_count;')
+    tenant_count = cur.fetchone()
+
+    ''' tenant count '''
+    cur.execute('SELECT * FROM BD_count;')
+    BD_count = cur.fetchone()
+
+    ''' AP count '''
+    cur.execute('SELECT * FROM AP_count;')
+    AP_count = cur.fetchone()
+
+    ''' EPG count '''
+    cur.execute('SELECT * FROM epg_count;')
+    epg_count = cur.fetchone()
+
     cur.close()
     conn.close()
-    return render_template('index.html', epcount=epcount, endpointcount=endpointcount,cleaned_timestamp=cleaned_timestamp)
+    return render_template('index.html', epcount=epcount, epg_count=epg_count,endpointcount=endpointcount,tenant_count=tenant_count,BD_count=BD_count,AP_count=AP_count,cleaned_timestamp=cleaned_timestamp)
 
 @app.route('/eptables')
 def eptables():

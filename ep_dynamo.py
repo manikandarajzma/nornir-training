@@ -42,6 +42,54 @@ for data in ep_data['imdata']:
        mac = ep[1]['mac']
        cur.execute("INSERT INTO endpoint_data values (%s,%s,%s,%s)", (epg, vlans, ip, mac));
 
+def count_tenant(cur):
+    with open('tenant.json') as f:
+       tenant_data = json.load(f)
+    tenant_count = tenant_data['totalCount']
+    drop_table_tenant_count = ''' DROP table IF EXISTS tenant_count '''
+    cur.execute(drop_table_tenant_count)
+    cur.execute("""CREATE TABLE tenant_count(
+             tenant_count VARCHAR(50));
+            """)
+    cur.execute("INSERT INTO tenant_count (tenant_count) values (%s)", (tenant_count, ));
+
+def count_BD(cur):
+    with open('BD.json') as f:
+       BD_data = json.load(f)
+    BD_count = BD_data['totalCount']
+    drop_table_BD_count = ''' DROP table IF EXISTS BD_count '''
+    cur.execute(drop_table_BD_count)
+    cur.execute("""CREATE TABLE BD_count(
+             BD_count VARCHAR(50));
+            """)
+    cur.execute("INSERT INTO BD_count (BD_count) values (%s)", (BD_count, ));
+
+def count_AP(cur):
+    with open('AP.json') as f:
+       AP_data = json.load(f)
+    AP_count = AP_data['totalCount']
+    drop_table_AP_count = ''' DROP table IF EXISTS AP_count '''
+    cur.execute(drop_table_AP_count)
+    cur.execute("""CREATE TABLE AP_count(
+             AP_count VARCHAR(50));
+            """)
+    cur.execute("INSERT INTO AP_count (AP_count) values (%s)", (AP_count, ));
+
+def count_epg(cur):
+    with open('epg.json') as f:
+       epg_data = json.load(f)
+    epg_count = epg_data['totalCount']
+    drop_table_epg_count = ''' DROP table IF EXISTS epg_count '''
+    cur.execute(drop_table_epg_count)
+    cur.execute("""CREATE TABLE epg_count(
+             epg_count VARCHAR(50));
+            """)
+    cur.execute("INSERT INTO epg_count (epg_count) values (%s)", (epg_count, ));
+    
+count_tenant(cur)
+count_BD(cur)
+count_AP(cur)
+count_epg(cur)
 conn.commit()
 cur.close()
 conn.close()
