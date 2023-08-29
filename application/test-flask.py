@@ -52,10 +52,10 @@ def index():
     tenantgraphcount = [x[0] for x in tenantgraphcount]
     cur.execute('SELECT dateadded FROM tenant_count_graph;')
     tenantgraphcount_timestamp = cur.fetchall()
-    tenantgraphcount_timestamp = [x[0] for x in timestamp]
+    tenantgraphcount_timestamp = [x[0] for x in tenantgraphcount_timestamp]
     tenantgraphcount_cleaned_timestamp = []
     for tenantgraphcount_cleanedentry in tenantgraphcount_timestamp:
-         tenantgraphcount_cleaned_timestamp.append(datetime.strptime(cleanedentry, '%m/%d/%Y, %H:%M:%S'))
+         tenantgraphcount_cleaned_timestamp.append(datetime.strptime(tenantgraphcount_cleanedentry, '%m/%d/%Y, %H:%M:%S'))
     
     ''' BD graph '''
     cur.execute('SELECT BD_count FROM BD_count_graph;')
@@ -63,10 +63,10 @@ def index():
     BDgraphcount = [x[0] for x in BDgraphcount]
     cur.execute('SELECT dateadded FROM BD_count_graph;')
     BDgraphcount_timestamp = cur.fetchall()
-    BDgraphcount_timestamp = [x[0] for x in timestamp]
+    BDgraphcount_timestamp = [x[0] for x in BDgraphcount_timestamp]
     BDgraphcount_cleaned_timestamp = []
     for BDgraphcount_cleanedentry in BDgraphcount_timestamp:
-         BDgraphcount_cleaned_timestamp.append(datetime.strptime(cleanedentry, '%m/%d/%Y, %H:%M:%S'))
+         BDgraphcount_cleaned_timestamp.append(datetime.strptime(BDgraphcount_cleanedentry, '%m/%d/%Y, %H:%M:%S'))
 
     cur.close()
     conn.close()

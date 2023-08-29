@@ -100,7 +100,7 @@ def count_epg(cur):
              epg_count VARCHAR(50));
             """)
     cur.execute("INSERT INTO epg_count (epg_count) values (%s)", (epg_count, ));
-    
+
 count_tenant(cur)
 count_BD(cur)
 count_AP(cur)
