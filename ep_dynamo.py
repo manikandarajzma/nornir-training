@@ -52,6 +52,14 @@ def count_tenant(cur):
              tenant_count VARCHAR(50));
             """)
     cur.execute("INSERT INTO tenant_count (tenant_count) values (%s)", (tenant_count, ));
+    
+    ''' Tenant graph'''
+
+    cur.execute("""CREATE TABLE IF NOT EXISTS tenant_count_graph(
+            tenant_count SERIAL,
+            dateadded varchar(100000));
+        """)
+    cur.execute("INSERT INTO tenant_count_graph values (%s, %s)", (tenant_count, date_time));
 
 def count_BD(cur):
     with open('BD.json') as f:
@@ -63,6 +71,13 @@ def count_BD(cur):
              BD_count VARCHAR(50));
             """)
     cur.execute("INSERT INTO BD_count (BD_count) values (%s)", (BD_count, ));
+
+    ''' BD Count graph'''
+    cur.execute("""CREATE TABLE IF NOT EXISTS BD_count_graph(
+            BD_count SERIAL,
+            dateadded varchar(100000));
+        """)
+    cur.execute("INSERT INTO BD_count_graph values (%s, %s)", (BD_count, date_time));
 
 def count_AP(cur):
     with open('AP.json') as f:

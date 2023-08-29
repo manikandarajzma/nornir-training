@@ -383,8 +383,8 @@
               </div>
             </div><!-- End EPG Card -->
 
-            <!-- Reports -->
-            <div class="col-12">
+            <!-- EP Chart -->
+            <div class="col-6">
               <div class="card">
                 <div class="col-lg-6">
                   <div class="card">
@@ -424,8 +424,93 @@
                 </div>
 
               </div>
-            </div><!-- End Reports -->
+            </div><!-- End EP chart -->
 
+            <!-- Tenant Chart -->
+            <div class="col-6">
+              <div class="card">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Tenant Count</h5>
+        
+                      <!-- tenantcount chart -->
+                      <canvas id="tenantcountchart" style="max-height: 400px;"></canvas>
+                      <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                          new Chart(document.querySelector('#tenantcountchart'), {
+                            type: 'line',
+                            data: {
+                              labels: {{ tenantgraphcount_cleaned_timestamp | tojson }},
+                              datasets: [{
+                                label: 'Tenant Count',
+                                data: {{ tenantgraphcount }},
+                                fill: false,
+                                borderColor: 'rgb(75, 192, 192)',
+                                tension: 0.1
+                              }]
+                            },
+                            options: {
+                              scales: {
+                                y: {
+                                  beginAtZero: true
+                                }
+                              }
+                            }
+                          });
+                        });
+                      </script>
+                      <!-- End tenantcount CHart -->
+        
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Tenant chart -->
+
+            <!-- BD Chart -->
+            <div class="col-6">
+              <div class="card">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">BD Count</h5>
+        
+                      <!-- BDcount chart -->
+                      <canvas id="BDcountchart" style="max-height: 400px;"></canvas>
+                      <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                          new Chart(document.querySelector('#BDcountchart'), {
+                            type: 'line',
+                            data: {
+                              labels: {{ BDgraphcount_cleaned_timestamp | tojson }},
+                              datasets: [{
+                                label: 'BD Count',
+                                data: {{ BDgraphcount }},
+                                fill: false,
+                                borderColor: 'rgb(75, 192, 192)',
+                                tension: 0.1
+                              }]
+                            },
+                            options: {
+                              scales: {
+                                y: {
+                                  beginAtZero: true
+                                }
+                              }
+                            }
+                          });
+                        });
+                      </script>
+                      <!-- End BDcount CHart -->
+        
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End BD chart -->
             <!-- Recent Sales -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
