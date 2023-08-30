@@ -68,10 +68,33 @@ def index():
     for BDgraphcount_cleanedentry in BDgraphcount_timestamp:
          BDgraphcount_cleaned_timestamp.append(datetime.strptime(BDgraphcount_cleanedentry, '%m/%d/%Y, %H:%M:%S'))
 
+    ''' AP graph '''
+    cur.execute('SELECT AP_count FROM AP_count_graph;')
+    APgraphcount = cur.fetchall()
+    APgraphcount = [x[0] for x in APgraphcount]
+    cur.execute('SELECT dateadded FROM AP_count_graph;')
+    APgraphcount_timestamp = cur.fetchall()
+    APgraphcount_timestamp = [x[0] for x in APgraphcount_timestamp]
+    APgraphcount_cleaned_timestamp = []
+    for APgraphcount_cleanedentry in APgraphcount_timestamp:
+         APgraphcount_cleaned_timestamp.append(datetime.strptime(APgraphcount_cleanedentry, '%m/%d/%Y, %H:%M:%S'))
+
+    ''' EPG graph '''
+    cur.execute('SELECT epg_count FROM epg_count_graph;')
+    epggraphcount = cur.fetchall()
+    epggraphcount = [x[0] for x in epggraphcount]
+    cur.execute('SELECT dateadded FROM epg_count_graph;')
+    epggraphcount_timestamp = cur.fetchall()
+    epggraphcount_timestamp = [x[0] for x in epggraphcount_timestamp]
+    epggraphcount_cleaned_timestamp = []
+    for epggraphcount_cleanedentry in epggraphcount_timestamp:
+         epggraphcount_cleaned_timestamp.append(datetime.strptime(epggraphcount_cleanedentry, '%m/%d/%Y, %H:%M:%S'))
+
     cur.close()
     conn.close()
-    return render_template('index.html', epcount=epcount, tenantgraphcount=tenantgraphcount,BDgraphcount=BDgraphcount,epg_count=epg_count,endpointcount=endpointcount,tenant_count=tenant_count,BD_count=BD_count,AP_count=AP_count,
-                           cleaned_timestamp=cleaned_timestamp,tenantgraphcount_cleaned_timestamp=tenantgraphcount_cleaned_timestamp,BDgraphcount_cleaned_timestamp=BDgraphcount_cleaned_timestamp)
+    return render_template('index.html', epcount=epcount, tenantgraphcount=tenantgraphcount,BDgraphcount=BDgraphcount,APgraphcount=APgraphcount,epggraphcount=epggraphcount,epg_count=epg_count,endpointcount=endpointcount,
+                           tenant_count=tenant_count,BD_count=BD_count,AP_count=AP_count,cleaned_timestamp=cleaned_timestamp,tenantgraphcount_cleaned_timestamp=tenantgraphcount_cleaned_timestamp,BDgraphcount_cleaned_timestamp=BDgraphcount_cleaned_timestamp,
+                           APgraphcount_cleaned_timestamp=APgraphcount_cleaned_timestamp,epggraphcount_cleaned_timestamp=epggraphcount_cleaned_timestamp)
 
     
 @app.route('/eptables')
@@ -82,7 +105,27 @@ def eptables():
     eps = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('tables-data.html',title = 'Endpoints Table', eps=eps)
+    return render_template('ep-data.html',title = 'Endpoints Table', eps=eps)
+
+@app.route('/epgtables')
+def epgtables():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM epg_data;')
+    epgs = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('epg-data.html',title = 'EPG Table', epgs=epgs)
+
+@app.route('/BDtables')
+def BDtables():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM BD_data;')
+    BDs = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('BD-data.html',title = 'BD Table', BDs=BDs)
 
 
 if __name__ == "__main__":

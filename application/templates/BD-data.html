@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Tenant</th>
+        <th>BD</th>
+        <th>ipLearning</th>
+        <th>pcTag</th>
+        <th>unicastroute</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for BD in BDs %}
+        <tr>
+          <td>{{ BD[0] }}</td>
+          <td>{{ BD[1] }}</td>
+          <td>{{ BD[4] }}</td>
+          <td>{{ BD[5] }}</td>
+          <td>{{ BD[6] }}</td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $(document).ready(function(){
+      $('#data').DataTable({
+          dom: 'lfrtipB',
+          buttons: [
+              {
+                  extend: 'excel',
+              }         
+          ]  
+        });
+  });
+  </script>
+  
+{% endblock %}
+
+
+
