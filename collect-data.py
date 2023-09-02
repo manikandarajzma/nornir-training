@@ -82,6 +82,10 @@ def create_end_point_table(base_url, cookies):
            ip = ep[1]['ip']
            mac = ep[1]['mac']
            cur.execute("INSERT INTO endpoint_data values (%s,%s,%s,%s)", (epg, vlans, ip, mac));
+ 
+    conn.commit()
+    cur.close()
+    conn.close()
 
 
 create_end_point_table(base_url,cookies)
