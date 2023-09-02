@@ -19,7 +19,7 @@ def get_db_connection():
 def index():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM endpoint_count;')
+    cur.execute('SELECT * FROM ep_count;')
     epcount = cur.fetchone()
     cur.execute('SELECT ep_count FROM endpoint_graph;')
     endpointcount = cur.fetchall()
