@@ -106,7 +106,7 @@ def create_tenant_table(base_url, cookies,cur):
     cur.execute("INSERT INTO tenant_count_graph values (%s, %s)", (tenant_count, date_time));
 
 
-def count_BD(cur):
+def create_BD_table(base_url, cookies,cur):
     request_url = '/node/class/fvBD.json'
     response_data = requests.get(base_url + request_url, cookies=cookies, verify = False )
     BD_data = json.loads(response_data.text)
@@ -208,6 +208,7 @@ def count_BD(cur):
 
 create_end_point_table(base_url,cookies,cur)
 create_tenant_table(base_url,cookies,cur)
+create_BD_table(base_url,cookies,cur)
 
 conn.commit()
 cur.close()
