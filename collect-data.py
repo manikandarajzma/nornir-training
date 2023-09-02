@@ -82,10 +82,6 @@ def create_end_point_table(base_url, cookies,cur):
            ip = ep[1]['ip']
            mac = ep[1]['mac']
            cur.execute("INSERT INTO endpoint_data values (%s,%s,%s,%s)", (epg, vlans, ip, mac));
- 
-    conn.commit()
-    cur.close()
-    conn.close()
 
 def create_tenant_table(base_url, cookies,cur):
     request_url = '/node/class/fvTenant.json'
@@ -111,9 +107,7 @@ def create_tenant_table(base_url, cookies,cur):
         """)
     cur.execute("INSERT INTO tenant_count_graph values (%s, %s)", (tenant_count, date_time));
 
-    conn.commit()
-    cur.close()
-    conn.close()
+
 
 # def count_BD(cur):
 #     with open('BD.json') as f:
@@ -216,3 +210,6 @@ def create_tenant_table(base_url, cookies,cur):
 create_end_point_table(base_url,cookies,cur)
 create_tenant_table(base_url,cookies,cur)
 
+conn.commit()
+cur.close()
+conn.close()
