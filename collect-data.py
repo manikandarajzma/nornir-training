@@ -88,9 +88,7 @@ def create_tenant_table(base_url, cookies,cur):
 
     response_data = requests.get(base_url + request_url, cookies=cookies, verify = False )
 
-    tenant_data_data = json.loads(response_data.text)
-    with open('tenant.json') as f:
-       tenant_data = json.load(f)
+    tenant_data = json.loads(response_data.text)
     tenant_count = tenant_data['totalCount']
     drop_table_tenant_count = ''' DROP table IF EXISTS tenant_count '''
     cur.execute(drop_table_tenant_count)
@@ -108,48 +106,49 @@ def create_tenant_table(base_url, cookies,cur):
     cur.execute("INSERT INTO tenant_count_graph values (%s, %s)", (tenant_count, date_time));
 
 
+def count_BD(cur):
+    request_url = '/node/class/fvBD.json'
+    response_data = requests.get(base_url + request_url, cookies=cookies, verify = False )
+    BD_data = json.loads(response_data.text)
 
-# def count_BD(cur):
-#     with open('BD.json') as f:
-#        BD_data = json.load(f)
-#     BD_count = BD_data['totalCount']
-#     drop_table_BD_count = ''' DROP table IF EXISTS BD_count '''
-#     cur.execute(drop_table_BD_count)
-#     cur.execute("""CREATE TABLE BD_count(
-#              BD_count VARCHAR(50));
-#             """)
-#     cur.execute("INSERT INTO BD_count (BD_count) values (%s)", (BD_count, ));
+    BD_count = BD_data['totalCount']
+    drop_table_BD_count = ''' DROP table IF EXISTS BD_count '''
+    cur.execute(drop_table_BD_count)
+    cur.execute("""CREATE TABLE BD_count(
+             BD_count VARCHAR(50));
+            """)
+    cur.execute("INSERT INTO BD_count (BD_count) values (%s)", (BD_count, ));
 
-#     ''' BD Count graph'''
-#     cur.execute("""CREATE TABLE IF NOT EXISTS BD_count_graph(
-#             BD_count SERIAL,
-#             dateadded varchar(100000));
-#         """)
-#     cur.execute("INSERT INTO BD_count_graph values (%s, %s)", (BD_count, date_time));
+    ''' BD Count graph'''
+    cur.execute("""CREATE TABLE IF NOT EXISTS BD_count_graph(
+            BD_count SERIAL,
+            dateadded varchar(100000));
+        """)
+    cur.execute("INSERT INTO BD_count_graph values (%s, %s)", (BD_count, date_time));
 
-#     ''' BD table '''
-#     drop_table_BD_data = ''' DROP table IF EXISTS BD_data '''
-#     cur.execute(drop_table_BD_data)
-#     cur.execute("""CREATE TABLE BD_data(
-#                 tenant VARCHAR(1000),
-#                 BD_name VARCHAR(50)  NOT NULL,
-#                 intersiteBumTrafficAllow VARCHAR(100) NOT NULL,
-#                 intersiteL2Stretch VARCHAR(100) NOT NULL,
-#                 ipLearning VARCHAR(100) NOT NULL,
-#                 pcTag VARCHAR(100) NOT NULL,
-#                 unicastRoute VARCHAR(100) NOT NULL);
-#                 """)
+    ''' BD table '''
+    drop_table_BD_data = ''' DROP table IF EXISTS BD_data '''
+    cur.execute(drop_table_BD_data)
+    cur.execute("""CREATE TABLE BD_data(
+                tenant VARCHAR(1000),
+                BD_name VARCHAR(50)  NOT NULL,
+                intersiteBumTrafficAllow VARCHAR(100) NOT NULL,
+                intersiteL2Stretch VARCHAR(100) NOT NULL,
+                ipLearning VARCHAR(100) NOT NULL,
+                pcTag VARCHAR(100) NOT NULL,
+                unicastRoute VARCHAR(100) NOT NULL);
+                """)
     
-#     for data in BD_data['imdata']:
-#       for BD in data['fvBD'].items():
-#         tenant = BD[1]['dn'].split('/')[1].split('-')[1]
-#         BD_name = BD[1]['dn'].split('/')[2].split('-')[1]
-#         intersiteBumTrafficAllow = BD[1]['intersiteBumTrafficAllow']
-#         intersiteL2Stretch = BD[1]['intersiteL2Stretch']
-#         ipLearning = BD[1]['ipLearning']
-#         pcTag = BD[1]['pcTag']
-#         unicastRoute = BD[1]['unicastRoute']
-#         cur.execute("INSERT INTO BD_data values (%s,%s,%s,%s,%s,%s,%s)", (tenant,BD_name,intersiteBumTrafficAllow,intersiteL2Stretch,ipLearning,pcTag,unicastRoute));
+    for data in BD_data['imdata']:
+      for BD in data['fvBD'].items():
+        tenant = BD[1]['dn'].split('/')[1].split('-')[1]
+        BD_name = BD[1]['dn'].split('/')[2].split('-')[1]
+        intersiteBumTrafficAllow = BD[1]['intersiteBumTrafficAllow']
+        intersiteL2Stretch = BD[1]['intersiteL2Stretch']
+        ipLearning = BD[1]['ipLearning']
+        pcTag = BD[1]['pcTag']
+        unicastRoute = BD[1]['unicastRoute']
+        cur.execute("INSERT INTO BD_data values (%s,%s,%s,%s,%s,%s,%s)", (tenant,BD_name,intersiteBumTrafficAllow,intersiteL2Stretch,ipLearning,pcTag,unicastRoute));
 
 # def count_AP(cur):
 #     with open('AP.json') as f:
