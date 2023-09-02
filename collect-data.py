@@ -33,8 +33,14 @@ def create_end_point_table(base_url, cookies):
     response_data = requests.get(base_url + request_url, cookies=cookies, verify = False )
 
     structured_data = json.loads(response_data.text)
-
-    print(structured_data)
+    for data in structured_data['imdata']:
+        for ep in data['fvCEp'].items():
+            ep_dn = ep[1]['dn']   
+            print(ep_dn.split('/')[3].split('-')[1])
+            print(ep[1]['encap'])
+            print(ep[1]['ip'])
+            print(ep[1]['mac'])
+            print('-'* 50)
 
 create_end_point_table(base_url,cookies)
     #for data in structured_data['imdata']:
