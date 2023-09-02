@@ -21,10 +21,10 @@ def index():
     cur = conn.cursor()
     cur.execute('SELECT * FROM ep_count;')
     epcount = cur.fetchone()
-    cur.execute('SELECT ep_count FROM endpoint_graph;')
+    cur.execute('SELECT ep_count FROM ep_count_graph;')
     endpointcount = cur.fetchall()
     endpointcount = [x[0] for x in endpointcount]
-    cur.execute('SELECT dateadded FROM endpoint_graph;')
+    cur.execute('SELECT dateadded FROM ep_count_graph;')
     timestamp = cur.fetchall()
     timestamp = [x[0] for x in timestamp]
     cleaned_timestamp = []
