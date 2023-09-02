@@ -150,28 +150,32 @@ def create_BD_table(base_url, cookies,cur):
         unicastRoute = BD[1]['unicastRoute']
         cur.execute("INSERT INTO BD_data values (%s,%s,%s,%s,%s,%s,%s)", (tenant,BD_name,intersiteBumTrafficAllow,intersiteL2Stretch,ipLearning,pcTag,unicastRoute));
 
-# def count_AP(cur):
-#     with open('AP.json') as f:
-#        AP_data = json.load(f)
-#     AP_count = AP_data['totalCount']
-#     drop_table_AP_count = ''' DROP table IF EXISTS AP_count '''
-#     cur.execute(drop_table_AP_count)
-#     cur.execute("""CREATE TABLE AP_count(
-#              AP_count VARCHAR(50));
-#             """)
-#     cur.execute("INSERT INTO AP_count (AP_count) values (%s)", (AP_count, ));
+def create_AP_table(base_url, cookies,cur):
+    request_url = '/node/class/fvAP.json'
+    response_data = requests.get(base_url + request_url, cookies=cookies, verify = False )
+    AP_data = json.loads(response_data.text)
 
-#     ''' AP Count graph'''
-#     cur.execute("""CREATE TABLE IF NOT EXISTS AP_count_graph(
-#             AP_count SERIAL,
-#             dateadded varchar(100000));
-#         """)
-#     cur.execute("INSERT INTO AP_count_graph values (%s, %s)", (AP_count, date_time));
+    AP_count = AP_data['totalCount']
+    drop_table_AP_count = ''' DROP table IF EXISTS AP_count '''
+    cur.execute(drop_table_AP_count)
+    cur.execute("""CREATE TABLE AP_count(
+             AP_count VARCHAR(50));
+            """)
+    cur.execute("INSERT INTO AP_count (AP_count) values (%s)", (AP_count, ));
+
+    ''' AP Count graph'''
+    cur.execute("""CREATE TABLE IF NOT EXISTS AP_count_graph(
+            AP_count SERIAL,
+            dateadded varchar(100000));
+        """)
+    cur.execute("INSERT INTO AP_count_graph values (%s, %s)", (AP_count, date_time));
 
 
-# def count_epg(cur):
-    with open('epg.json') as f:
-       epg_data = json.load(f)
+def create_epg_table(base_url,cookies,cur):
+    request_url = '/node/class/fvAEPg.json'
+    response_data = requests.get(base_url + request_url, cookies=cookies, verify = False )
+    epg_data = json.loads(response_data.text)
+
     epg_count = epg_data['totalCount']
     drop_table_epg_count = ''' DROP table IF EXISTS epg_count '''
     cur.execute(drop_table_epg_count)
@@ -209,6 +213,9 @@ def create_BD_table(base_url, cookies,cur):
 create_end_point_table(base_url,cookies,cur)
 create_tenant_table(base_url,cookies,cur)
 create_BD_table(base_url,cookies,cur)
+create_AP_table(base_url,cookies,cur)
+create_epg_table(base_url,cookies,cur)
+
 
 conn.commit()
 cur.close()
