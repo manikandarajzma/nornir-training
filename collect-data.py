@@ -35,10 +35,10 @@ cookies['APIC-Cookie'] = login_attributes['token']
 
 ''' psql connection '''
 conn = psycopg2.connect(database = "aci", 
-                        user = "postgres", 
+                        user = "aciuser", 
                         host= 'localhost',
-                        password = "postgres",
-                        port = 5433)
+                        password = "acip@sswd",
+                        port = 5432)
 cur = conn.cursor()
 
 
@@ -49,15 +49,40 @@ def create_end_point_table(base_url, cookies):
 
     ep_data = json.loads(response_data.text)
     ep_count = ep_data['totalCount']
-    print(ep_count)
-    # for data in ep_data['imdata']:
-    #     for ep in data['fvCEp'].items():
-    #         ep_dn = ep[1]['dn']   
-    #         print(ep_dn.split('/')[3].split('-')[1])
-    #         print(ep[1]['encap'])
-    #         print(ep[1]['ip'])
-    #         print(ep[1]['mac'])
-    #         print('-'* 50)
+    drop_table_ep_count = ''' DROP table IF EXISTS ep_count '''
+    cur.execute(drop_table_ep_count)
+    cur.execute("""CREATE TABLE ep_count(
+             ep_count VARCHAR(50));
+            """)
+    cur.execute("INSERT INTO ep_count (ep_count) values (%s)", (ep_count, ));
+    
+    ''' EP graph'''
+
+    cur.execute("""CREATE TABLE IF NOT EXISTS ep_count_graph(
+            ep_count SERIAL,
+            dateadded varchar(100000));
+        """)
+    cur.execute("INSERT INTO ep_count_graph values (%s, %s)", (ep_count, date_time));
+
+    ''' EP table '''
+    drop_table_endpoint_data = ''' DROP table IF EXISTS endpoint_data '''
+    cur.execute(drop_table_endpoint_data)
+    cur.execute("""CREATE TABLE endpoint_data(
+                epg_name VARCHAR(1000),
+                vlan VARCHAR(50)  NOT NULL,
+                ip_address VARCHAR(100) NOT NULL,
+                mac_address VARCHAR(100) NOT NULL);
+                """)
+    
+    for data in ep_data['imdata']:
+      for ep in data['fvCEp'].items():
+           ep_dn = ep[1]['dn']   
+           epg = ep_dn.split('/')[3].split('-')[1]
+           vlans = ep[1]['encap']
+           ip = ep[1]['ip']
+           mac = ep[1]['mac']
+           cur.execute("INSERT INTO endpoint_data values (%s,%s,%s,%s)", (epg, vlans, ip, mac));
+
 
 create_end_point_table(base_url,cookies)
 
