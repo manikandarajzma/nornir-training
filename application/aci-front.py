@@ -9,10 +9,10 @@ app = Flask(__name__)
 
 def get_db_connection():
     conn = psycopg2.connect(database = "aci", 
-                            user = "postgres", 
+                            user = "aciuser", 
                             host= 'localhost',
-                            password = "postgres",
-                            port = 5433)
+                            password = "acip@sswd",
+                            port = 5432)
     return conn
 
 @app.route('/')
