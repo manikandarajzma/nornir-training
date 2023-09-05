@@ -125,8 +125,9 @@ def BDtables():
     BDs = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('BDmypor-data.html',title = 'BD Table', BDs=BDs)
+    return render_template('BD-data.html',title = 'BD Table', BDs=BDs)
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    #app.run(debug = True)
+    app.run(host = '0.0.0.0')
