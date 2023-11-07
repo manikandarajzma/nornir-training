@@ -4,10 +4,12 @@
   <table id="data" class="table table-striped">
     <thead>
       <tr>
-        <th>EPG</th>
-        <th>VLAN</th>
+        <th>TENANT-AP-MAC</th>
         <th>IP</th>
         <th>MAC</th>
+        <th>VLAN</th>
+        <th>PORT</th>
+        <th>SINGLE/DUAL HOMED</th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +19,8 @@
           <td>{{ ep[1] }}</td>
           <td>{{ ep[2] }}</td>
           <td>{{ ep[3] }}</td>
+          <td>{{ ep[4] }}</td>
+          <td>{{ ep[5] }}</td>
         </tr>
       {% endfor %}
     </tbody>

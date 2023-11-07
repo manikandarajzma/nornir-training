@@ -64,25 +64,7 @@ def create_end_point_table(base_url, cookies,cur):
         """)
     cur.execute("INSERT INTO ep_count_graph values (%s, %s)", (ep_count, date_time));
 
-    ''' EP table '''
-    drop_table_endpoint_data = ''' DROP table IF EXISTS endpoint_data '''
-    cur.execute(drop_table_endpoint_data)
-    cur.execute("""CREATE TABLE endpoint_data(
-                epg_name VARCHAR(1000),
-                vlan VARCHAR(50)  NOT NULL,
-                ip_address VARCHAR(100) NOT NULL,
-                mac_address VARCHAR(100) NOT NULL);
-                """)
     
-    for data in ep_data['imdata']:
-      for ep in data['fvCEp'].items():
-           ep_dn = ep[1]['dn']   
-           epg = ep_dn.split('/')[3].split('-')[1]
-           vlans = ep[1]['encap']
-           ip = ep[1]['ip']
-           mac = ep[1]['mac']
-           cur.execute("INSERT INTO endpoint_data values (%s,%s,%s,%s)", (epg, vlans, ip, mac));
-
 def create_tenant_table(base_url, cookies,cur):
     request_url = '/node/class/fvTenant.json'
 

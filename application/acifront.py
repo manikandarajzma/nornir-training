@@ -101,7 +101,7 @@ def index():
 def eptables():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM endpoint_data;')
+    cur.execute('SELECT * FROM endpoints_data;')
     eps = cur.fetchall()
     cur.close()
     conn.close()
