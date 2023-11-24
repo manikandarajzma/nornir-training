@@ -1,0 +1,21 @@
+---
+nexus:
+    username: 'admin'
+    password: 'Admin123'
+    platform: "nxos"
+    data:
+        ntp_server: "4.4.4.4"
+
+
+ios:
+    username: 'admin'
+    password: 'admin'
+    platform: "ios"
+    connection_options:
+      netmiko:
+        extras:
+          secret: admin
+    data:
+        ntp_server: "8.8.8.8"
+        
+    

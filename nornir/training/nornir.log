@@ -1,0 +1,678 @@
+2023-11-23 21:16:44,582 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 21:16:45,461 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'send_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_scrapli/tasks/core/send_config.py", line 58, in send_config
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_scrapli/connection.py", line 105, in open
+    connection.open()
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/driver/base/sync_driver.py", line 93, in open
+    self.channel.channel_authenticate_ssh(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/decorators.py", line 223, in decorate
+    return _multiprocessing_timeout(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/decorators.py", line 114, in _multiprocessing_timeout
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/channel/sync_channel.py", line 288, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/channel/base_channel.py", line 459, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Host key verification failed
+
+2023-11-23 21:16:45,462 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 8, in random_config
+    task.run(task=send_config, config= f"ntp server {task.host['ntp_server']}")
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_config (failed)
+
+
+2023-11-23 21:16:45,631 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'send_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_scrapli/tasks/core/send_config.py", line 58, in send_config
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_scrapli/connection.py", line 105, in open
+    connection.open()
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/driver/base/sync_driver.py", line 93, in open
+    self.channel.channel_authenticate_ssh(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/decorators.py", line 223, in decorate
+    return _multiprocessing_timeout(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/decorators.py", line 114, in _multiprocessing_timeout
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/channel/sync_channel.py", line 288, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/channel/base_channel.py", line 459, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Host key verification failed
+
+2023-11-23 21:16:45,631 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 8, in random_config
+    task.run(task=send_config, config= f"ntp server {task.host['ntp_server']}")
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_config (failed)
+
+
+2023-11-23 21:21:28,205 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 21:21:31,956 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'send_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_scrapli/tasks/core/send_config.py", line 58, in send_config
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_scrapli/connection.py", line 105, in open
+    connection.open()
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/driver/base/sync_driver.py", line 110, in open
+    self.on_open(self)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/driver/core/cisco_iosxe/sync_driver.py", line 25, in iosxe_on_open
+    conn.acquire_priv(desired_priv=conn.default_desired_privilege_level)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/driver/network/sync_driver.py", line 179, in acquire_priv
+    raise ScrapliPrivilegeError(msg)
+scrapli.exceptions.ScrapliPrivilegeError: Failed to acquire requested privilege level privilege_exec
+
+2023-11-23 21:21:31,957 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 8, in random_config
+    task.run(task=send_config, config= f"ntp server {task.host['ntp_server']}")
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_config (failed)
+
+
+2023-11-23 21:21:33,625 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'send_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/transport/plugins/system/transport.py", line 158, in read
+    buf = self.session.read(65535)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/transport/plugins/system/ptyprocess.py", line 493, in read
+    raise EOFError("End Of File (EOF). Empty string style platform.")
+EOFError: End Of File (EOF). Empty string style platform.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_scrapli/tasks/core/send_config.py", line 58, in send_config
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_scrapli/connection.py", line 105, in open
+    connection.open()
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/driver/base/sync_driver.py", line 93, in open
+    self.channel.channel_authenticate_ssh(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/decorators.py", line 223, in decorate
+    return _multiprocessing_timeout(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/decorators.py", line 114, in _multiprocessing_timeout
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/channel/sync_channel.py", line 285, in channel_authenticate_ssh
+    buf = self.read()
+          ^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/channel/sync_channel.py", line 69, in read
+    buf = self.transport.read()
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/decorators.py", line 223, in decorate
+    return _multiprocessing_timeout(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/decorators.py", line 114, in _multiprocessing_timeout
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/scrapli/transport/plugins/system/transport.py", line 165, in read
+    raise ScrapliConnectionError(msg) from exc
+scrapli.exceptions.ScrapliConnectionError: encountered EOF reading from transport; typically means the device closed the connection
+
+2023-11-23 21:21:33,626 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 8, in random_config
+    task.run(task=send_config, config= f"ntp server {task.host['ntp_server']}")
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_config (failed)
+
+
+2023-11-23 21:28:17,362 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 21:28:18,387 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:28:18,388 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 10, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:28:20,206 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/paramiko/client.py", line 485, in connect
+    self._auth(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/paramiko/client.py", line 818, in _auth
+    raise saved_exception
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/paramiko/client.py", line 805, in _auth
+    self._transport.auth_password(username, password)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/paramiko/transport.py", line 1587, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/paramiko/auth_handler.py", line 263, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 439, in __init__
+    self._open()
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1083, in establish_connection
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_nxos 192.168.68.117:22
+
+
+Authentication failed.
+
+2023-11-23 21:28:20,207 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 10, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:29:31,030 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 21:29:32,119 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:29:32,120 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 10, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:29:32,226 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:29:32,226 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 10, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:30:51,281 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 21:30:52,361 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:30:52,367 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 10, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:30:52,503 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:30:52,504 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 10, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:31:34,665 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 21:31:35,741 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:31:35,743 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 11, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:31:35,911 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:31:35,912 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 11, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:32:04,393 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 21:32:05,511 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:32:05,511 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 11, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:32:05,669 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:32:05,670 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 11, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:39:47,332 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 21:39:48,403 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:39:48,404 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 11, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:39:48,549 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 32, in netmiko_send_command
+    result = net_connect.send_command(command_string, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1662, in send_command
+    command_string = self.normalize_cmd(command_string)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/netmiko/base_connection.py", line 1879, in normalize_cmd
+    command = command.rstrip()
+              ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'rstrip'
+
+2023-11-23 21:39:48,550 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 11, in random_config
+    task.run(task=netmiko_send_command, command_string=commands)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-11-23 21:40:10,995 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 21:51:43,176 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 21:51:44,503 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_salt/utils/yangdantic.py", line 47, in wrapper
+    return self.function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_salt/plugins/tasks/netmiko_send_config.py", line 144, in netmiko_send_config
+    result.append(conn.send_config_set(config_commands=config, **kwargs))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: BaseConnection.send_config_set() got an unexpected keyword argument 'commands'
+
+2023-11-23 21:51:44,504 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 12, in random_config
+    task.run(task=netmiko_send_config, commands= command_list)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+
+2023-11-23 21:51:44,645 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_salt/utils/yangdantic.py", line 47, in wrapper
+    return self.function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir_salt/plugins/tasks/netmiko_send_config.py", line 144, in netmiko_send_config
+    result.append(conn.send_config_set(config_commands=config, **kwargs))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: BaseConnection.send_config_set() got an unexpected keyword argument 'commands'
+
+2023-11-23 21:51:44,646 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 12, in random_config
+    task.run(task=netmiko_send_config, commands= command_list)
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/lib/python3.11/site-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+
+2023-11-23 22:16:10,563 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 22:16:29,837 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 22:17:17,525 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 22:24:11,925 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 22:25:12,911 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
