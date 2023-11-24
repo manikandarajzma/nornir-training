@@ -676,3 +676,26 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
 2023-11-23 22:17:17,525 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
 2023-11-23 22:24:11,925 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
 2023-11-23 22:25:12,911 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 22:35:54,511 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 23:02:33,570 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
+2023-11-23 23:02:33,571 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/training-nornir/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 11, in random_config
+    task.run(task=netmiko_send_config, config_file= netmiko_config_file.txt)
+                                                    ^^^^^^^^^^^^^^^^^^^
+NameError: name 'netmiko_config_file' is not defined
+
+2023-11-23 23:02:33,571 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'random_config' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/training-nornir/lib/python3.11/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mani.govindarajan/Library/CloudStorage/OneDrive-Technologent/coding/nornir/training/runbook.py", line 11, in random_config
+    task.run(task=netmiko_send_config, config_file= netmiko_config_file.txt)
+                                                    ^^^^^^^^^^^^^^^^^^^
+NameError: name 'netmiko_config_file' is not defined
+
+2023-11-23 23:02:52,545 -  nornir.core -     INFO -        run() - Running task 'random_config' with args {} on 2 hosts
